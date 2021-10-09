@@ -50,5 +50,8 @@ You can initialize this repository with code from a Subversion, Mercurial, or TF
     hint: or --ff-only on the command line to override the configured default per
     hint: invocation.
 
+## Build
+
+    mvn clean package deploy
 
     
