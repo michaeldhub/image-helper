@@ -81,10 +81,15 @@ public class ImageToolkit {
         return resultRGB;
     }
 
-    public static ImageMeta buildImageMeta(String uri, boolean isUrl) throws IOException {
+    public static ImageMeta buildImageMeta(BufferedImage bufferedImage, String uri, boolean isUrl) throws IOException {
         Map<Float, Integer> hueCountMap = new HashMap<>();
         Map<HSL, Integer> hslCountMap = new HashMap<>();
-        BufferedImage image = isUrl ? ImageIO.read(new URL(uri)) : ImageIO.read(new File(uri));
+        BufferedImage image = null;
+        if (bufferedImage != null) {
+            image = bufferedImage;
+        } else {
+            image = isUrl ? ImageIO.read(new URL(uri)) : ImageIO.read(new File(uri));
+        }
         int width = image.getWidth();
         int height = image.getHeight();
         int minx = image.getMinX();
